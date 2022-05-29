@@ -1,0 +1,222 @@
+<html> 
+  <head> 
+    <!-- <script src = "https://aframe.io/releases/1.3.0/aframe.min.js"> 
+    </script>  -->
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+
+      this.addEventListener("load",()=>{
+
+        let btnEsquerda = document.querySelector(".btn-esquerda");
+        let btnDireita = document.querySelector(".btn-direita")
+        let btnTop = document.querySelector(".btn-top");
+        let btnBottom = document.querySelector(".btn-bottom");
+
+        let sSolar = document.querySelector("#sSolar");
+        let rotacaoAtual = sSolar.getAttribute("rotation");
+
+        btnEsquerda.addEventListener("click",()=>{
+
+          rotacaoAtual.y -= 10;
+
+      
+          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
+        })
+
+        btnDireita.addEventListener("click",()=>{
+
+          rotacaoAtual.y += 10;
+
+
+          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
+        })
+
+        btnTop.addEventListener("click",()=>{
+
+          rotacaoAtual.x += 10;
+
+
+          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
+        })
+
+        btnBottom.addEventListener("click",()=>{
+
+          rotacaoAtual.x -= 10;
+
+
+          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
+        })
+      })
+    </script>
+    
+    <style>
+
+      .area-controle{
+        
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        height: 30vh;
+        top: 1em;
+        left: 0;
+        z-index: 10;
+        /* background-color: red; */
+      }
+
+      .area1{
+
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .area2{
+
+        display: flex;
+
+        justify-content: space-around;
+      }
+
+      .area3{
+
+        display: flex;
+        justify-content: center;
+      }
+
+      .buttonControle{
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        font-size: 1.5em;
+        padding: 0.2em;
+        border-radius: 0.2em;
+      }
+
+    </style>
+  </head> 
+  <body style="margin : 0px; overflow: hidden;"> 
+    
+    <div class="area-controle">
+      <div class="area1">
+
+        <button class="buttonControle btn-top">
+          <i class="fa fa-chevron-up"></i>
+        </button>
+        
+      </div>
+      <div class="area2">
+
+        <button class="buttonControle btn-esquerda">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+
+        <button class="buttonControle btn-direita">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+        
+      </div>
+      <div class="area3">
+
+        
+        <button class="buttonControle btn-bottom">
+          <i class="fa fa-chevron-down"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <a-scene 
+    
+      arjs
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    > 
+
+      
+
+      <!-- <a-marker preset="hiro"> -->
+
+          <a-entity id="sSolar">
+
+            <a-sphere src="soltext.jpg" position = "0 0 -20"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 100900; easing: linear;" radius = "10" ></a-sphere>
+            
+            <!-- mercurio -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 10000;easing: linear;">
+              <a-sphere src="mercurio.png" position = "0 0 -13"
+              animation="property: rotation; to: 0 -360 0; loop: true; dur: 10090; easing: linear;" radius = "1" ></a-sphere> 
+      
+            </a-entity>
+      
+            <!-- venus -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 30000;easing: linear;">
+              <a-sphere src="venus.jpg" position = "0 0 17"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10090; easing: linear;" radius = "1" ></a-sphere>
+              
+            </a-entity>
+            
+            <!-- terra -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 35000;easing: linear;">
+              <a-sphere src="terra.jpg" position = "0 0 -20"
+              animation="property: rotation; to: 0 -360 0; loop: true; dur: 10090; easing: linear;" radius = "1.6" ></a-sphere>
+              
+            </a-entity>
+      
+            <!-- marte -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 40000;easing: linear;">
+              <a-sphere src="marte.PNG" position = "0 0 26.5"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10090; easing: linear;" radius = "1" ></a-sphere>
+              
+            </a-entity>
+            
+            <!-- jupiter -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 30000;easing: linear;">
+              <a-sphere src="jupiter.jpg" position = "0 0 -33"
+              animation="property: rotation; to: 0 -360 0; loop: true; dur: 10090; easing: linear;" radius = "3" ></a-sphere>
+      
+            </a-entity>
+      
+            <!-- saturno -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 100000;easing: linear;">
+              
+              <a-sphere src="saturno.jpg" position = "0 0 43"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10090; easing: linear;" radius = "2.5" ></a-sphere>    
+              <a-circle src="anel.png"  position = "0 0 43" 
+              radius = "5" rotation="-50 50"></a-circle>
+            </a-entity>
+            <!-- urano -->
+      
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 35600;easing: linear;">
+      
+              <a-sphere src="uranoooo.jpg" position = "0 0 47"
+              animation="property: rotation; to: 0 -360 0; loop: true; dur: 10090; easing: linear;" radius = "2.5" ></a-sphere>
+            </a-entity>
+      
+            <!-- neturno -->
+            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 50000;easing: linear;">
+              
+              <a-sphere src="netuno.PNG" position = "0 0 -54"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10090; easing: linear;" radius = "2.6" ></a-sphere>
+              
+            </a-entity>
+        </a-entity>
+                
+        <!-- </a-marker> -->
+
+        <a-entity  camera  position = "0 40 120" rotation="-20 0 0"> </a-entity >
+        
+      <a-sky  src="fundoEspaço.webp"></a-sky> 
+    </a-scene > 
+  </body> 
+  </html>
+    
+  
