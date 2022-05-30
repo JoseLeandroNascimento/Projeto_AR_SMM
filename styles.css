@@ -1,0 +1,58 @@
+
+.area-controle{
+  
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 30vh;
+  top: 1em;
+  left: 0;
+  z-index: 10;
+  /* background-color: red; */
+}
+
+.area1{
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.area2{
+
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.area3{
+
+  display: flex;
+  justify-content: center;
+}
+
+.buttonControle{
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 1.5em;
+  padding: 0.2em;
+  border-radius: 0.2em;
+}
+
+.buttonControle:active{
+
+  background-color: rgba(13, 131, 131, 0.843);
+}
+
+.btnZoom{
+
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  bottom: 4em;
+  left: 1em;
+  z-index: 10;
+
+}

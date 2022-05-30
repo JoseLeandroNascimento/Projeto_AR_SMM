@@ -8,135 +8,10 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-
-      this.addEventListener("load",()=>{
-
-        let btnEsquerda = document.querySelector(".btn-esquerda");
-        let btnDireita = document.querySelector(".btn-direita")
-        let btnTop = document.querySelector(".btn-top");
-        let btnBottom = document.querySelector(".btn-bottom");
-        let btnZoom = document.querySelector(".btnZoom");
-        let camera = document.querySelector("#cameraId");
-
-        let distancia = camera.getAttribute("position");
-
-        let zoomStatus = true;
-        let sSolar = document.querySelector("#sSolar");
-        let rotacaoAtual = sSolar.getAttribute("rotation");
-
-        btnEsquerda.addEventListener("click",()=>{
-
-          rotacaoAtual.y -= 10;
-
-      
-          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
-        })
-      
-        btnZoom.addEventListener("click",()=>{
-
-          zoomStatus = !zoomStatus;
-
-          if(distancia.z == 120){
-
-            distancia.z = 150;
-          }else{
-
-            distancia.z = 120;
-          }
-
-          camera.setAttribute("position",`${distancia.x} ${distancia.y} ${distancia.z}`);
-
-
-        })
-
-        btnDireita.addEventListener("click",()=>{
-
-          rotacaoAtual.y += 10;
-
-
-          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
-        })
-
-        btnTop.addEventListener("click",()=>{
-
-          rotacaoAtual.x += 10;
-
-
-          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
-        })
-
-        btnBottom.addEventListener("click",()=>{
-
-          rotacaoAtual.x -= 10;
-
-
-          sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
-        })
-      })
-    </script>
+   
+    <script src="./script.js"></script>
     
-    <style>
-
-      .area-controle{
-        
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        width: 20vw;
-        height: 30vh;
-        top: 1em;
-        left: 0;
-        z-index: 10;
-        /* background-color: red; */
-      }
-
-      .area1{
-
-        display: flex;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .area2{
-
-        display: flex;
-
-        justify-content: space-around;
-      }
-
-      .area3{
-
-        display: flex;
-        justify-content: center;
-      }
-
-      .buttonControle{
-        background-color: transparent;
-        border: 2px solid white;
-        color: white;
-        font-size: 1.5em;
-        padding: 0.2em;
-        border-radius: 0.2em;
-      }
-
-      .buttonControle:active{
-
-        background-color: rgba(13, 131, 131, 0.843);
-      }
-
-      .btnZoom{
-
-        position: absolute;
-        width: 2em;
-        height: 2em;
-        bottom: 4em;
-        left: 1em;
-        z-index: 10;
-
-      }
-
-    </style>
+   <link rel="stylesheet" href="./styles.css">
   </head> 
   <body style="margin : 0px; overflow: hidden;"> 
     
@@ -186,13 +61,14 @@
 
       <a-marker preset="hiro">
 
-          <a-entity id="sSolar">
+          <a-entity id="sSolar" >
 
-            <a-sphere src="soltext.jpg" position = "0 0 -20"
-              animation="property: rotation; to: 0 360 0; loop: true; dur: 100900; easing: linear;" radius = "10" ></a-sphere>
+            <a-sphere src="soltext.jpg" position = "0 0 -20" 
+              
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 100900; easing: linear;" radius = "10" class="astro" ></a-sphere>
             
             <!-- mercurio -->
-            <a-entity rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 10000;easing: linear;">
+            <a-entity  rotation="0 0 0" position="0 0 -20" animation = "property: rotation; to: 0 360 0; loop: true; dur: 10000;easing: linear;">
               <a-sphere src="mercurio.png" position = "0 0 -13"
               animation="property: rotation; to: 0 -360 0; loop: true; dur: 10090; easing: linear;" radius = "1" ></a-sphere> 
       
