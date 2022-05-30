@@ -16,7 +16,12 @@
         let btnDireita = document.querySelector(".btn-direita")
         let btnTop = document.querySelector(".btn-top");
         let btnBottom = document.querySelector(".btn-bottom");
+        let btnZoom = document.querySelector(".btnZoom");
+        let camera = document.querySelector("#cameraId");
 
+        let distancia = camera.getAttribute("position");
+
+        let zoomStatus = true;
         let sSolar = document.querySelector("#sSolar");
         let rotacaoAtual = sSolar.getAttribute("rotation");
 
@@ -26,6 +31,23 @@
 
       
           sSolar.setAttribute("rotation",`${rotacaoAtual.x} ${rotacaoAtual.y} ${rotacaoAtual.z}`)
+        })
+      
+        btnZoom.addEventListener("click",()=>{
+
+          zoomStatus = !zoomStatus;
+
+          if(distancia.z == 120){
+
+            distancia.z = 150;
+          }else{
+
+            distancia.z = 120;
+          }
+
+          camera.setAttribute("position",`${distancia.x} ${distancia.y} ${distancia.z}`);
+
+
         })
 
         btnDireita.addEventListener("click",()=>{
@@ -98,6 +120,22 @@
         border-radius: 0.2em;
       }
 
+      .buttonControle:active{
+
+        background-color: rgba(13, 131, 131, 0.843);
+      }
+
+      .btnZoom{
+
+        position: absolute;
+        width: 2em;
+        height: 2em;
+        bottom: 4em;
+        left: 1em;
+        z-index: 10;
+
+      }
+
     </style>
   </head> 
   <body style="margin : 0px; overflow: hidden;"> 
@@ -131,6 +169,9 @@
       </div>
     </div>
 
+    <button class="buttonControle btnZoom">
+      <i class="fa fa-plus"></i>
+    </button>
     <a-scene 
     
       arjs
@@ -212,7 +253,7 @@
                 
         <!-- </a-marker> -->
 
-        <a-entity  camera  position = "0 40 120" rotation="-20 0 0"> </a-entity >
+        <a-entity id="cameraId" camera  position = "0 40 120" rotation="-20 0 0"> </a-entity >
         
       <a-sky  src="fundoEspaço.webp"></a-sky> 
     </a-scene > 
